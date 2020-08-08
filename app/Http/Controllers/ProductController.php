@@ -18,7 +18,7 @@ class ProductController extends BaseController
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+    */
     public function __construct()
     {
         $this->middleware('auth:api')->except('index','show');
@@ -34,7 +34,7 @@ class ProductController extends BaseController
     {
        $product = new Product;
        $product->name = $request->name;
-       $product->stock = $request->detail;
+       $product->detail = $request->detail;
        $product->price = $request->price;
        $product->stock = $request->stock;
        $product->discount = $request->discount;
@@ -57,7 +57,6 @@ class ProductController extends BaseController
     public function update(ProductRequest $request, Product $product)
     {   
         $product->update($request->all());
-
         return $this->sendResponse(new ProductResource($product), 'Product updated successfully.');
     }
    
